@@ -28,7 +28,7 @@ jacocoTestReport {
         html.enabled true
     }
     afterEvaluate {
-        classDirectories.setFrom(files(classDirectories.files.collect {
+        classDirectories.from(files(classDirectories.files.collect {
             fileTree(dir: it, exclude: ['paaohjelma/**'])
         }))
     }
