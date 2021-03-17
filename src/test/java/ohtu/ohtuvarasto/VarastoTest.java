@@ -64,7 +64,7 @@ public class VarastoTest {
     @Test
     public void alkuSaldoaSisaltavaKonstruktoriEiAnnaLuodaLiianSuurtaSaldoa() {
         Varasto saldoinenVarasto = new Varasto(20,25);
-        assertEquals(20, saldoinenVarasto.getSaldo(), vertailuTarkkuus);
+        assertEquals(10, saldoinenVarasto.getSaldo(), vertailuTarkkuus);
     }    
     
     @Test
