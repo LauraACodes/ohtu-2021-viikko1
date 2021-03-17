@@ -22,7 +22,6 @@ jar {
         attributes 'Main-Class': 'paaohjelma.Main'
     }
 }
-
 jacocoTestReport {
     reports {
         xml.enabled true
@@ -30,8 +29,7 @@ jacocoTestReport {
     }
     afterEvaluate {
         classDirectories.setFrom(files(classDirectories.files.collect {
-            fileTree(dir: it, exclude: ['paaohjalma/**'])
+            fileTree(dir: it, exclude: ['paaohjelma/**'])
         }))
     }
 }
-
