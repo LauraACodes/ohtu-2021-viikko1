@@ -18,12 +18,7 @@ public class Varasto {
     }
 
     public Varasto(double tilavuus, double alkuSaldo) { // kuormitetaan
-        if (tilavuus > 0.0) {
-            this.tilavuus = tilavuus;
-        } else // virheellinen, nollataan
-        {
-            this.tilavuus = 0.0;  // => käyttökelvoton varasto
-        }
+        asetaVarasto(tilavuus);
         if (alkuSaldo < 0.0) {
             this.saldo = 0.0;
         } else if (alkuSaldo <= tilavuus) // mahtuu
@@ -31,6 +26,15 @@ public class Varasto {
             this.saldo = alkuSaldo;
         } else {
             this.saldo = tilavuus;  // täyteen ja ylimäärä hukkaan!
+        }
+    }
+
+    public void asetaVarasto(double tilavuus) {
+        if (tilavuus > 0.0) {
+            this.tilavuus = tilavuus;
+        } else // virheellinen, nollataan
+        {
+            this.tilavuus = 0.0;  // => käyttökelvoton varasto
         }
     }
 
@@ -53,7 +57,7 @@ public class Varasto {
         {
             return;       // tällainen pikapoistuminenkin!
         }
-        if (maara <= paljonkoMahtuu()) // omia aksessoreita voi kutsua
+        else if (maara <= paljonkoMahtuu()) // omia aksessoreita voi kutsua
         {
             saldo = saldo + maara;          // ihan suoraan sellaisinaan
         } else {
@@ -66,11 +70,12 @@ public class Varasto {
         {
             return 0.0;   // tällainen pikapoistuminenkin!
         }
-        if (maara > saldo) {          // annetaan mitä voidaan
+        else if (maara > saldo) {          // annetaan mitä voidaan
             double kaikkiMitaVoidaan = saldo;
             saldo = 0.0;               // ja tyhjäksi menee
             return kaikkiMitaVoidaan;  // poistutaan saman tien
         }
+
         // jos tänne päästään, kaikki pyydetty voidaan antaa
         saldo = saldo - maara;  // vähennetään annettava saldosta
         return maara;
